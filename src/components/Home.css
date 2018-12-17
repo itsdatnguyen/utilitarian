@@ -3,8 +3,10 @@
 .home {
   color: var(--colorPrimary);
   background: var(--colorSecondary);
-  div {
-    background: var(--colorPrimary);
-    color: var(--colorSecondary);
-  }
+}
+
+
+div {
+  background: var(--colorPrimary);
+  color: var(--colorSecondary);
 }

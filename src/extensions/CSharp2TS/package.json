@@ -1,0 +1,116 @@
+{
+    "name": "csharp2ts",
+    "displayName": "CSharp2TS",
+    "description": "Convert C# POCOs to typescript",
+    "version": "0.0.22",
+    "publisher": "rafaelsalguero",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.cs2ts"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.cs2ts",
+                "title": "Convert C# to TypeScript"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "CSharp2TS configuration",
+            "properties": {
+                "csharp2ts.propertiesToCamelCase": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True for camelCase, false for preserving original name."
+                },
+                "csharp2ts.trimPostfixes": {
+                    "type": [
+                        "array",
+                        "string"
+                    ],
+                    "default": "",
+                    "description": "Removes specified postfixes from property names, types & class names. Can be array OR string. Case-sensitive."
+                },
+                "csharp2ts.recursiveTrimPostfixes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether or not trim postfixes recursive. (e.g. with postfixes 'A' & 'B' PersonAAB will become PersonAA when it's false & Person when it's true)"
+                },
+                "csharp2ts.ignoreInitializer": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Ignore property initializer"
+                },
+                "csharp2ts.removeMethodBodies": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "True to remove method bodies, false to preserve the body as-is"
+                },
+                "csharp2ts.removeConstructors": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True to remove class constructors, false to treat then like any other method"
+                },
+                "csharp2ts.methodStyle": {
+                    "type": "string",
+                    "enum": [
+                        "signature",
+                        "lambda",
+                        "controller"
+                    ],
+                    "default": "signature",
+                    "description": "'signature' to emit a method signature, 'lambda' to emit a lambda function. 'controller' to emit a lambda to call an async controller"
+                },
+                "csharp2ts.byteArrayToString": {
+                    "type":"boolean",
+                    "default": true,
+                    "description": "True to convert C# byte array type to Typescript string, defaults to true since the serialization of C# byte[] results in a string"
+                }, 
+                "csharp2ts.dateToDateOrString": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "True to convert C# DateTime and DateTimeOffset to Typescript (Date | string), defaults to true since the serialization of C# DateTime results in a string"
+                },
+                "csharp2ts.removeWithModifier": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Remove fields or properties with the given modifiers. Ex. if you want to remove private and internal members set to ['private', 'internal']"
+                }, 
+                "csharp2ts.removeNameRegex": {
+                    "type": "string",
+                    "default": "",
+                    "description": "If setted, any property or field that its name matches the given regex will be removed"
+                },
+                "csharp2ts.classToInterface": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "True to convert classes to interfaces, false to convert classes to classes. Default is true"
+                },
+                "csharp2ts.preserveModifiers": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "True to preserve fields and property modifiers. Default is false"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
