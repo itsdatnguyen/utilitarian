@@ -1,24 +1,19 @@
 import * as React from 'react'
-import {Header} from './Header'
+import {Nav} from './Nav'
 import {Footer} from './Footer'
 import Head from 'next/head'
 
+import '../../../sass/index.sass'
+
 export const Layout: React.FunctionComponent = props =>
   <div id="layout">
-    {/*language=PostCSS*/}
-    <style jsx global>{`
-        #layout {
-            background-color: darkolivegreen;
-        }
-    `}
-    </style>
     <Head>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
     </Head>
-    <Header/>
+    <Nav/>
     <main>
       {props.children}
     </main>

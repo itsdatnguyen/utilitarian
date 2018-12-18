@@ -5,8 +5,16 @@ import {
   SITE_NAME, SITE_TITLE
 } from '../src/constants/env'
 
+export interface DocumentProps {
+  styleTags: React.ReactElement<{}>[]
+}
+
 export default class extends Document {
+
+  props: DocumentProps
+
   static async getInitialProps(...args) {
+
     const documentProps = await Document.getInitialProps(...args)
     const {req, renderPage} = args[0]
     const page = renderPage()
@@ -40,7 +48,9 @@ export default class extends Document {
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
           crossOrigin="anonymous"
         />
-        <link rel="shortcut icon" href="/static/favicon.ico"/>
+        <link href="https://fonts.googleapis.com/css?family=Aleo" rel="stylesheet" />
+        <link rel="stylesheet" href="/_next/static/style.css" />
+        <link rel="shortcut icon" href="/static/favicon.ico" />
 
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,Array.prototype.find,Array.prototype.includes,String.prototype.includes,Array.prototype.findIndex,Object.entries"></script>
         {!DEV && FB_TRACKING_ID && (
@@ -73,6 +83,7 @@ fbq('track', 'PageView'); `
             }}/>
           </>
         )}
+        {this.props.styleTags}
       </Head>
       <body>
       <Main/>

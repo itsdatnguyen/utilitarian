@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Layout} from '../src/components/Layout'
+import {Layout} from '../src/components/layout/Layout'
 
 const SSR: React.NextFunctionComponent<Props> = props =>
   <Layout>
