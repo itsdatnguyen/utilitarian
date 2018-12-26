@@ -1,19 +1,21 @@
 @import './theme.sass'
   
 $navbar-padding: 1em
-$navbar-text-color: #EEEEEE
 
 .navbar
   display: flex
   width: 100%
   z-index: 10
+  position: absolute
+  top: 0
+  left: 0
 
   .navbar__brand-logo
     display: flex
     align-items: center
     padding: $navbar-padding
     margin: 0
-    color: $navbar-text-color
+    color: $text-dark-grey
     text-decoration: none
     transition: background-color .2s ease-in-out
 

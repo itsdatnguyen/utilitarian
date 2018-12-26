@@ -14,8 +14,10 @@ export const Layout: React.FunctionComponent = props =>
       />
     </Head>
     <Nav/>
-    <main>
-      {props.children}
-    </main>
-    <Footer/>
+    <div className="content-container">
+      <main className="main">
+        {props.children}
+      </main>
+      <Footer/>
+    </div>
   </div>
