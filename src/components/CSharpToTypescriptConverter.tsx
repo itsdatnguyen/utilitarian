@@ -1,5 +1,8 @@
 import * as React from 'react'
+import dynamic from 'next/dynamic'
 
+import { Button, TextArea } from "./app";
+const MonacoEditor = dynamic(import('../extensions/MonacoEditor'), { ssr: false })
 import { CSharpToTypescriptService } from "../services/CSharpToTypescript";
 
 export interface CSharpToTypescriptConverterState {
@@ -10,7 +13,23 @@ export interface CSharpToTypescriptConverterState {
 export class CSharpToTypescriptConverter extends React.Component<any, CSharpToTypescriptConverterState> {
 
     state = {
-        cSharpCode: '',
+        cSharpCode: `// test code
+public class PostDetailsDto
+{
+    public int PostId { get; set; }
+    public string GroupName { get; set; }
+    public string Author { get; set; }
+    public int AuthorId { get; set; }
+    public string Title { get; set; }
+    public string Text { get; set; }
+    public DateTime CreatedDate { get; set; }
+    public string[] Tags { get; set; }
+    public bool IsPinned { get; set; }
+    public string FileUri { get; set; }
+    public int VoteRating { get; set; }
+    public int UserRating { get; set; }
+    public int CommentCount { get; set; }
+}`,
         typescriptOutput: ''
     }
 
@@ -21,9 +40,9 @@ export class CSharpToTypescriptConverter extends React.Component<any, CSharpToTy
         this.onConvertCode = this.onConvertCode.bind(this)
     }
 
-    onInputChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    onInputChange(value: string) {
         this.setState({
-            cSharpCode: event.target.value
+            cSharpCode: value
         })
     }
 
@@ -41,11 +60,26 @@ export class CSharpToTypescriptConverter extends React.Component<any, CSharpToTy
     render() {
         const { cSharpCode, typescriptOutput } = this.state
         return (
-            <div>
-                <textarea value={cSharpCode} onChange={this.onInputChange}></textarea>
-                <button onClick={this.onConvertCode}>Convert Code</button>
-                <div>{typescriptOutput}</div>
+          <div>
+            <div className="editors">
+              <div className="editor">
+                <MonacoEditor width="500" height="500" language="csharp" value={cSharpCode} onChange={this.onInputChange}/>
+              </div>
+              <div className="editor">
+                <MonacoEditor width="500" height="500" language="typescript" value={typescriptOutput}/>
+              </div>
             </div>
+            <Button onClick={this.onConvertCode}>Convert Code</Button>
+            <style jsx>{`
+              .editors {
+                display: flex;
+              } 
+
+              .editor {
+                border: 1px solid black;
+              }
+            `}</style>
+          </div>
         )
     }
 }

@@ -28,7 +28,8 @@
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
     "react-easy-state": "^6.0.6",
-    "react-ga": "^2.5.3"
+    "react-ga": "^2.5.3",
+    "react-monaco-editor": "^0.22.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
@@ -45,6 +46,7 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "jest": "^23.6.0",
+    "monaco-editor-webpack-plugin": "^1.7.0",
     "node-sass": "^4.11.0",
     "postcss-preset-env": "^6.5.0",
     "ts-jest": "^23.10.3",
