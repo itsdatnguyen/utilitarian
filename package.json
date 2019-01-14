@@ -22,6 +22,7 @@
     "@zeit/next-sass": "^1.0.1",
     "classnames": "^2.2.6",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "next": "^7.0.2",
     "node-normalize-scss": "^8.0.0",
@@ -29,13 +30,15 @@
     "react-dom": "^16.7.0-alpha.2",
     "react-easy-state": "^6.0.6",
     "react-ga": "^2.5.3",
-    "react-monaco-editor": "^0.22.0"
+    "react-monaco-editor": "^0.22.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
     "@types/enzyme": "^3.1.10",
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/jest": "^23.3.3",
+    "@types/lodash": "^4.14.119",
     "@types/node": "^8.10.14",
     "@types/react": "^16.7.13",
     "@zeit/next-css": "^1.0.1",

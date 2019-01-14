@@ -1,11 +1,24 @@
 import * as React from 'react'
-import ReactMonacoEditor, { MonacoEditorProps as ReactMonacoEditorProps } from "react-monaco-editor";
+import dynamic from 'next/dynamic'
+import { MonacoEditorProps as ReactMonacoEditorProps } from "react-monaco-editor";
+import merge from 'lodash/merge'
 
-interface MonacoEditorProps extends ReactMonacoEditorProps {
+const ReactMonacoEditor = dynamic(import('react-monaco-editor'), { ssr: false })
+
+export interface MonacoEditorProps extends ReactMonacoEditorProps {
   
 }
 
-let MonacoEditor: React.FunctionComponent<MonacoEditorProps> = props => 
-  <ReactMonacoEditor {...props}/>
+export const MonacoEditor: React.FunctionComponent<MonacoEditorProps> = newProps => {
+  const defaultProps: ReactMonacoEditorProps = {
+    options: {
 
-export default MonacoEditor
+    }
+  }
+
+  const props = merge(defaultProps, newProps) 
+
+  return (
+    <ReactMonacoEditor {...props}/>
+  )
+}
