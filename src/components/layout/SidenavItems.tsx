@@ -8,7 +8,8 @@ export interface NavigationItem {
 
 export const NavigationItems: NavigationItem[] = [
   { name: 'C# To Typescript', url: '/CSharpToTypescript' },
-  { name: 'GUID Generator', url: '/GUIDGenerator'}
+  { name: 'GUID Generator', url: '/GUIDGenerator' },
+  { name: 'Lorem Ipsum Generator', url: 'LoremIpsumGenerator' }
 ]
 
 export const SidenavItems: React.FunctionComponent = props =>

@@ -1,9 +1,8 @@
 import * as React from 'react'
-import dynamic from 'next/dynamic'
 
 import { MonacoEditor, MonacoEditorProps } from "../extensions/MonacoEditor";
 
-import { Button, TextArea } from "./app";
+import { Button } from "./app";
 import { CSharpToTypescriptService } from "../services/CSharpToTypescript";
 
 export interface CSharpToTypescriptConverterState {

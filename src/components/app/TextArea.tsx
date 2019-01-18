@@ -5,9 +5,8 @@ export interface TextAreaProps extends React.DetailedHTMLProps<React.TextareaHTM
 }
 
 export const TextArea: React.FunctionComponent<TextAreaProps> = props => 
-  <textarea {...props}>
-    {props.children}
-
+  <div>
+    <textarea {...props}></textarea>
     <style jsx>{`
       textarea {
         padding: 0.6rem;
@@ -15,5 +14,5 @@ export const TextArea: React.FunctionComponent<TextAreaProps> = props =>
         border: 0.1rem solid black;
       }
     `}</style>
-  </textarea>
+  </div>
   
